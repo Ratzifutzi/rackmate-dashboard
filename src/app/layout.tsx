@@ -26,7 +26,7 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body
-				className={`${geistSans.variable} ${geistMono.variable} h-screen w-screen bg-gray-950 antialiased`}
+				className={`${geistSans.variable} ${geistMono.variable} h-screen w-screen bg-gray-950 text-white antialiased`}
 			>
 				<Topbar />
 				<main>{children}</main>
