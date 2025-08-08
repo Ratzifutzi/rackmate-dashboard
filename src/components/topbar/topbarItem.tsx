@@ -1,5 +1,3 @@
-"use client";
-
 import { usePathname } from "next/navigation";
 import React from "react";
 
@@ -9,12 +7,14 @@ export function TopbarItem({
 	bold,
 	target,
 	disabled,
+	onClick,
 }: {
 	icon?: React.ReactNode;
 	text?: string;
 	bold?: boolean;
 	target?: string;
 	disabled?: boolean;
+	onClick?: () => void;
 }) {
 	const pathname = usePathname();
 	const isOnThisPage = target ? pathname === target : false;
@@ -37,10 +37,12 @@ export function TopbarItem({
 	);
 
 	return target ? (
-		<a href={target} className={className}>
+		<a href={target} className={className} onClick={onClick} aria-disabled={disabled}>
 			{content}
 		</a>
 	) : (
-		<div className={className}>{content}</div>
+		<div className={className} onClick={onClick} aria-disabled={disabled}>
+			{content}
+		</div>
 	);
 }

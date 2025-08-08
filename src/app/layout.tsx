@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { Topbar } from "../components/topbar";
+import { Topbar } from "../components/topbar/topbar";
+import { Dimmer } from "@/components/overlays/dimmer";
+import { SleepOverlay } from "@/components/overlays/sleep";
+import { NotificationOverlay } from "@/components/overlays/notification";
+import { NotificationProvider } from "@/context/NotificationContext";
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
@@ -28,8 +32,10 @@ export default function RootLayout({
 			<body
 				className={`${geistSans.variable} ${geistMono.variable} h-screen w-screen bg-gray-950 text-white antialiased`}
 			>
-				<Topbar />
-				<main>{children}</main>
+				<NotificationProvider>
+					<Topbar />
+					<main>{children}</main>
+				</NotificationProvider>
 			</body>
 		</html>
 	);
