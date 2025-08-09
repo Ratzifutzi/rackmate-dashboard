@@ -11,6 +11,13 @@ import {
 	Zap,
 	ShieldBan,
 	Shield,
+	Printer,
+	Ticket,
+	StickyNote,
+	Paintbrush,
+	Settings,
+	Cloud,
+	Power,
 } from "lucide-react";
 import { TopbarItem } from "./topbarItem";
 import { TopbarSeperator } from "./topbarSeperator";
@@ -29,13 +36,16 @@ export function Topbar() {
 		<>
 			<div className="flex h-16 flex-row items-center justify-start gap-2 border-b border-white/10 p-2">
 				<TopbarItem text="00:00" bold={true} />
-				<TopbarItem icon={<LockKeyhole />} />
+				<TopbarItem icon={<Power />} />
 				<TopbarItem icon={<Moon />} onClick={enableSleepMode} />
+				<TopbarItem icon={<LockKeyhole />} />
 				<TopbarSeperator />
 				<TopbarItem text="Dashboard" icon={<LayoutDashboard />} target="/" />
-				<TopbarItem text="LEDs" icon={<Lightbulb />} target="/led" />
+				<TopbarItem text="Lights" icon={<Lightbulb />} target="/led" />
 				<TopbarItem text="Power" icon={<Zap />} target="/power" />
+				<TopbarItem text="Printer" icon={<Printer />} target="/printer" />
 				<TopbarItem text="Security" icon={<Shield />} disabled={true} />
+				<TopbarItem text="API" icon={<Cloud />} disabled={true} />
 			</div>
 
 			{screenInSleepAnimation && (
