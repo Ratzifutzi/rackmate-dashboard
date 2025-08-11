@@ -6,6 +6,7 @@ import { GetColorName } from "hex-color-to-color-name";
 import { CirclePicker } from "react-color";
 import { BigButton } from "@/components/partials/bigButton";
 import { Zap, ZapOff } from "lucide-react";
+import { GridLoader } from "react-spinners";
 
 export default function LedPage() {
 	const [isOn, setIsOn] = useState(false);
@@ -28,7 +29,7 @@ export default function LedPage() {
 
 				<div className="mx-5 h-65 w-px bg-white/20"></div>
 
-				<div className={`flex flex-row gap-5 ${isOn ? "" : "opacity-15"}`}>
+				<div className={`flex flex-row gap-5 ${isOn ? "" : "pointer-events-none opacity-15"}`}>
 					<HexColorPicker
 						color={color}
 						onChange={setColor}
@@ -42,6 +43,8 @@ export default function LedPage() {
 						width="450px"
 					/>
 				</div>
+
+				<div className="mx-5 h-65 w-px bg-white/20"></div>
 			</div>
 		</>
 	);
