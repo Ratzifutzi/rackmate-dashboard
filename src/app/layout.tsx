@@ -34,7 +34,7 @@ export default function RootLayout({
 			>
 				<NotificationProvider>
 					<Topbar />
-					<main>{children}</main>
+					<main className="h-[calc(100vh-4rem)]">{children}</main>
 				</NotificationProvider>
 			</body>
 		</html>
