@@ -44,7 +44,7 @@ export function Topbar() {
 				<TopbarItem text="Lights" icon={<Lightbulb />} target="/led" />
 				<TopbarItem text="Power" icon={<Zap />} target="/power" />
 				<TopbarItem text="Printer" icon={<Printer />} target="/printer" />
-				<TopbarItem text="Security" icon={<Shield />} disabled={true} />
+				<TopbarItem text="System" icon={<Shield />} disabled={true} />
 				<TopbarItem text="API" icon={<Cloud />} disabled={true} />
 			</div>
 
