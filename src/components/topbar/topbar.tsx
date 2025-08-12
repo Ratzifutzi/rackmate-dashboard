@@ -53,7 +53,10 @@ export function Topbar() {
 					onAnimationComplete={() => {
 						// Request the API to put the screen to sleep
 						fetch("/api/sleep").then(response => {
-							setScreenInSleepAnimation(false);
+							setTimeout(() => {
+								setScreenInSleepAnimation(false);
+							}, 500);
+
 							if (!response.ok) {
 								createNotification(
 									"Error",
