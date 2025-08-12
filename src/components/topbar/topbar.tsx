@@ -51,17 +51,22 @@ export function Topbar() {
 			{screenInSleepAnimation && (
 				<SleepOverlay
 					onAnimationComplete={() => {
-						setScreenInSleepAnimation(false);
-						createNotification(
-							"Error",
-							"The screen could not be put to sleep. API error.",
-							"Close",
-							() => {},
-							"Retry",
-							() => {
-								enableSleepMode();
+						// Request the API to put the screen to sleep
+						fetch("/api/sleep").then(response => {
+							if (!response.ok) {
+								setScreenInSleepAnimation(false);
+								createNotification(
+									"Error",
+									`The screen could not be put to sleep. API Error: ${response.statusText}`,
+									"Close",
+									() => {},
+									"Retry",
+									() => {
+										enableSleepMode();
+									}
+								);
 							}
-						);
+						});
 					}}
 				/>
 			)}
