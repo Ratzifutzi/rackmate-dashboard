@@ -18,5 +18,7 @@ export async function GET(request: NextRequest): Promise<Response> {
 
 			resolve(NextResponse.json({ message: "Command executed successfully", output: stdout }));
 		});
+
+		resolve(NextResponse.json({ message: "Command executed successfully", output: "test" }));
 	});
 }
