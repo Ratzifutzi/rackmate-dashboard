@@ -10,21 +10,19 @@ export default function Home() {
 	useEffect(() => {
 		const fetchTemperature = async () => {
 			try {
-				const response = await fetch("/api/system/temperature");
-				if (!response.ok) {
-					throw new Error("Failed to fetch temperature");
-				}
+				const response = await fetch("/api/system/temperature", { cache: "no-store" });
+				if (!response.ok) throw new Error("Failed to fetch temperature");
 				const data = await response.json();
-				setTemperature(data.temperature);
+				const t = Number(data.temperature);
+				if (Number.isFinite(t)) setTemperature(t);
 			} catch (error) {
 				console.error("Error fetching temperature:", error);
 			}
 		};
 
 		fetchTemperature();
-		const intervalId = setInterval(fetchTemperature, 5000);
-
-		return () => clearInterval(intervalId);
+		const id = setInterval(fetchTemperature, 5000);
+		return () => clearInterval(id);
 	}, []);
 
 	return (
