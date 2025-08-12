@@ -1,9 +1,9 @@
 import { exec } from "child_process";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(request: NextRequest) {
+export async function GET(request: NextRequest): Promise<Response> {
 	// Execute shell command using a Promise to properly handle the async operation
-	return new Promise(resolve => {
+	return new Promise<Response>(resolve => {
 		exec("sh /usr/local/bin/sleep-screen-kiosk", (error, stdout, stderr) => {
 			if (error) {
 				console.error(`Error executing command: ${error.message}`);
