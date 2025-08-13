@@ -1,13 +1,27 @@
 "use client";
 
+import CircularProgress from "@/components/partials/circleGauge";
 import * as React from "react";
 import { useEffect, useState } from "react";
 import GaugeComponent from "react-gauge-component";
 
 export default function Home() {
 	const [temperature, setTemperature] = useState(0);
+	const [cpuLoad, setCpuLoad] = useState(0);
 
 	useEffect(() => {
+		const fetchCpuLoad = async () => {
+			try {
+				const response = await fetch("/api/system/cpu", { cache: "no-store" });
+				if (!response.ok) throw new Error("Failed to fetch CPU load");
+				const data = await response.json();
+				const load = Number(data);
+				if (Number.isFinite(load)) setCpuLoad(load);
+			} catch (error) {
+				setCpuLoad(-1);
+			}
+		};
+
 		const fetchTemperature = async () => {
 			try {
 				const response = await fetch("/api/system/temperature", { cache: "no-store" });
@@ -16,12 +30,16 @@ export default function Home() {
 				const t = Number(data.temperature);
 				if (Number.isFinite(t)) setTemperature(t);
 			} catch (error) {
-				console.error("Error fetching temperature:", error);
+				setTemperature(-1);
 			}
 		};
 
 		fetchTemperature();
-		const id = setInterval(fetchTemperature, 5000);
+		fetchCpuLoad();
+		const id = setInterval(() => {
+			fetchTemperature();
+			fetchCpuLoad();
+		}, 1500);
 		return () => clearInterval(id);
 	}, []);
 
@@ -79,6 +97,7 @@ export default function Home() {
 					minValue={0}
 					maxValue={95}
 				/>
+				<CircularProgress value={cpuLoad} />
 			</div>
 		</>
 	);
