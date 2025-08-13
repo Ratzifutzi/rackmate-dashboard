@@ -3,6 +3,7 @@ import React from "react";
 
 type Props = {
 	value: number;
+	label?: string;
 	size?: number;
 	stroke?: number;
 	trackClassName?: string;
@@ -12,6 +13,7 @@ type Props = {
 
 export default function CircularProgress({
 	value,
+	label,
 	size = 120,
 	stroke = 4,
 	trackClassName = "stroke-gray-900",
@@ -54,7 +56,9 @@ export default function CircularProgress({
 				/>
 			</svg>
 			{showLabel && (
-				<div className="pointer-events-none absolute text-xl font-medium">
+				<div className="pointer-events-none absolute text-center text-xl font-medium">
+					{label ? label + "\n" : ""}
+					{label ? <br /> : ""}
 					{clamped.toFixed(2)}%
 				</div>
 			)}
