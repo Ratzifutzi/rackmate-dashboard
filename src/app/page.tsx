@@ -40,7 +40,7 @@ export default function Home() {
 				const response = await fetch("/api/system/temperature", { cache: "no-store" });
 				if (!response.ok) throw new Error("Failed to fetch temperature");
 				const data = await response.json();
-				const t = Number(data.temperature);
+				const t = Number(data.main);
 				if (Number.isFinite(t)) setTemperature(t);
 			} catch (error) {
 				setTemperature(-1);
@@ -61,7 +61,7 @@ export default function Home() {
 	return (
 		<>
 			<div className="flex h-full flex-row items-center px-10">
-				<div className="flex h-[90%] flex-col justify-between">
+				<div className="flex h-[90%] min-w-[300px] flex-col justify-between">
 					<GaugeComponent
 						type="semicircle"
 						arc={{
@@ -118,6 +118,8 @@ export default function Home() {
 						<CircularProgress value={ramUsage} label="RAM:" />
 					</div>
 				</div>
+
+				<div className="mx-5 h-65 w-px bg-white/20"></div>
 			</div>
 		</>
 	);
