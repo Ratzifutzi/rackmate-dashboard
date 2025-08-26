@@ -5,6 +5,7 @@ export function StyledButton({
 	disabled = false,
 	className = "",
 	style,
+	textAlign = "left",
 }: {
 	text?: string;
 	icon?: React.ReactNode;
@@ -12,21 +13,22 @@ export function StyledButton({
 	disabled?: boolean;
 	className?: string;
 	style: "Primary" | "Secondary" | "Danger" | "Success" | "Warning";
+	textAlign?: "left" | "center" | "right";
 }) {
 	return (
 		<button
-			className={`flex items-center gap-2 rounded-md border-2 px-4 py-2 text-white disabled:opacity-50 ${className} ${
+			className={`flex items-center gap-2 rounded-md border-1 px-4 py-2 text-white disabled:opacity-50 ${className} ${
 				style === "Primary" ? "border-white/15 bg-blue-500/40" : ""
 			} ${style === "Secondary" ? "border-white/15 bg-gray-900" : ""} ${
-				style === "Danger" ? "border-white/15 bg-red-500" : ""
+				style === "Danger" ? "border-white/40 bg-red-500" : ""
 			} ${style === "Success" ? "border-white/15 bg-green-500" : ""} ${
 				style === "Warning" ? "border-white/15 bg-yellow-500" : ""
-			}`}
+			} ${textAlign === "center" ? "justify-center" : ""}`}
 			onClick={onClick}
 			disabled={disabled}
 		>
 			{icon && <span className="text-lg">{icon}</span>}
-			{text}
+			<span className={`text-${textAlign}`}>{text}</span>
 		</button>
 	);
 }

@@ -6,6 +6,7 @@ import { Dimmer } from "@/components/overlays/dimmer";
 import { SleepOverlay } from "@/components/overlays/sleep";
 import { NotificationOverlay } from "@/components/overlays/notification";
 import { NotificationProvider } from "@/context/NotificationContext";
+import { LockedScreen } from "@/components/overlays/lockedScreen";
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
@@ -32,6 +33,7 @@ export default function RootLayout({
 			<body
 				className={`${geistSans.variable} ${geistMono.variable} h-screen w-screen bg-gray-950 text-white antialiased`}
 			>
+				<LockedScreen />
 				<NotificationProvider>
 					<Topbar />
 					<main className="h-[calc(100vh-4rem)]">{children}</main>

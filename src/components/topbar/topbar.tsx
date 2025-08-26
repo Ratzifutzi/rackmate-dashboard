@@ -3,19 +3,12 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
 import {
-	Moon,
 	LockKeyhole,
-	Lock,
 	LayoutDashboard,
 	Lightbulb,
 	Zap,
-	ShieldBan,
 	Shield,
 	Printer,
-	Ticket,
-	StickyNote,
-	Paintbrush,
-	Settings,
 	Cloud,
 	Power,
 } from "lucide-react";
@@ -36,8 +29,7 @@ export function Topbar() {
 		<>
 			<div className="flex h-16 flex-row items-center justify-start gap-2 border-b border-white/10 p-2">
 				<TopbarItem text="00:00" bold={true} />
-				<TopbarItem icon={<Power />} />
-				<TopbarItem icon={<Moon />} onClick={enableSleepMode} />
+				<TopbarItem icon={<Power />} onClick={enableSleepMode} />
 				<TopbarItem icon={<LockKeyhole />} />
 				<TopbarSeperator />
 				<TopbarItem text="Dashboard" icon={<LayoutDashboard />} target="/" />
