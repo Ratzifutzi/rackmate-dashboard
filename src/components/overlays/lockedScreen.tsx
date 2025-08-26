@@ -36,6 +36,7 @@ export const LockedScreen = ({
 		const enteredCodeString = enteredCode.join("");
 		if (enteredCodeString === code) {
 			onCorrectCode?.();
+			// Remove the component from the DOM
 		} else {
 			onIncorrectCode?.();
 		}

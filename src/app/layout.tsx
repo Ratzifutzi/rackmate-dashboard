@@ -33,7 +33,6 @@ export default function RootLayout({
 			<body
 				className={`${geistSans.variable} ${geistMono.variable} h-screen w-screen bg-gray-950 text-white antialiased`}
 			>
-				<LockedScreen />
 				<NotificationProvider>
 					<Topbar />
 					<main className="h-[calc(100vh-4rem)]">{children}</main>
