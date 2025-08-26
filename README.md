@@ -8,7 +8,8 @@ This is a little project I've made for a Deskpi Rackmate that will have a small 
 https://github.com/user-attachments/assets/f7d7d775-04db-4064-b01d-f6b56cb996ed
 
 
-https://deskpi.com/products/deskpi-7-84-inch-touch-screen-1280x400-tft-lcd-display-for-10-inch-2u-rack-rackmate-supports-installation-of-t0-t1-t2
+<img width="1600" height="1600" alt="DP-0059-05" src="https://github.com/user-attachments/assets/df3f0357-274a-4e90-b4b8-bd30b0cf30a9" />
+
 
 
 ## Run the app
