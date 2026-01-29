@@ -1,8 +1,13 @@
 'use client';
 
-import { Box, Button } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
+import TabButton from './tabButton';
+import { HomeIcon, PlugZapIcon } from 'lucide-react';
+import { useLoadingStates } from '@/contexts/LoadingStates';
 
 export default function Header() {
+	const { RelayLoading } = useLoadingStates();
+
 	return (
 		<>
 			<Box
@@ -10,13 +15,22 @@ export default function Header() {
 				height={'3.5em'}
 				bg={'bg.subtle'}
 				display={'flex'}
+				gap={'7px'}
 				padding={'7px'}
 				borderBottom={'solid 1.5px'}
 				borderBottomColor={'border'}
 			>
-				<Button height={'100%'} variant={'surface'}>
-					Test
-				</Button>
+				<TabButton
+					icon={<HomeIcon />}
+					text="Home"
+					href="/"
+				/>
+				<TabButton
+					icon={<PlugZapIcon />}
+					text="Relays"
+					href="/relays"
+					loadingState={RelayLoading}
+				/>
 			</Box>
 		</>
 	);

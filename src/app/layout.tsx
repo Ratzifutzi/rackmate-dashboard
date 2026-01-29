@@ -2,6 +2,10 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { Provider } from '@/components/ui/provider';
 import Header from '@/components/partials/header/header';
+import '@fontsource-variable/lexend';
+import { Box } from '@chakra-ui/react';
+import { Toaster } from '@/components/ui/toaster';
+import { LoadingStatesProvider } from '@/contexts/LoadingStates';
 
 export const metadata: Metadata = {
 	title: 'Create Next App',
@@ -16,10 +20,29 @@ export default function RootLayout({
 	return (
 		<html suppressHydrationWarning>
 			<body>
-				<Provider>
-					<Header />
-					{children}
-				</Provider>
+				<LoadingStatesProvider>
+					<Provider>
+						<Toaster />
+
+						<Box
+							height={'100dvh'}
+							width={'100dvw'}
+							display={'flex'}
+							flexDirection={'column'}
+						>
+							<Header />
+							<Box
+								as={'main'}
+								padding={'10px'}
+								width={'100%'}
+								flexGrow={1}
+								overflow={'scroll'}
+							>
+								{children}
+							</Box>
+						</Box>
+					</Provider>
+				</LoadingStatesProvider>
 			</body>
 		</html>
 	);
