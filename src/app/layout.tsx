@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { Provider } from '@/components/ui/provider';
+import Header from '@/components/partials/header/header';
 
 export const metadata: Metadata = {
 	title: 'Create Next App',
@@ -15,7 +16,10 @@ export default function RootLayout({
 	return (
 		<html suppressHydrationWarning>
 			<body>
-				<Provider>{children}</Provider>
+				<Provider>
+					<Header />
+					{children}
+				</Provider>
 			</body>
 		</html>
 	);
