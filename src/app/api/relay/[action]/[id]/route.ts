@@ -1,10 +1,10 @@
 import { NextResponse } from 'next/server';
 
 type Params = {
-	params: {
+	params: Promise<{
 		action: string;
 		id: string;
-	};
+	}>;
 };
 
 export async function GET(_req: Request, context: Params) {
