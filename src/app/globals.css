@@ -1,1 +1,14 @@
 @import 'tailwindcss';
+
+@media (hover: none) {
+	button:hover,
+	a:hover,
+	[data-part]:hover,
+	[data-hover]:hover {
+		background: inherit !important;
+		color: inherit !important;
+		border-color: inherit !important;
+		opacity: inherit !important;
+		text-decoration: inherit !important;
+	}
+}
