@@ -17,6 +17,7 @@ export default function Header() {
 				display={'flex'}
 				gap={'7px'}
 				padding={'7px'}
+				paddingInline={"15px"}
 				borderBottom={'solid 1.5px'}
 				borderBottomColor={'border'}
 			>

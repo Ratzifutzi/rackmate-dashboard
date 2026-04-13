@@ -9,17 +9,13 @@ export default function toggleAll(
 
 	const promise = (async () => {
 		for (const id of ids) {
-			const res = await fetch(
-				`http://192.168.178.106/${on ? 'on' : 'off'}/${id}`,
-				{
-					method: 'GET',
-					priority: 'high',
-					cache: 'no-store',
-				},
-			);
-			if (!res.ok) {
+			await fetch(`/api/relay/${on ? 'on' : 'off'}/${id}`, {
+				method: 'GET',
+				priority: 'high',
+				cache: 'no-store',
+			}).catch(() => {
 				throw new Error(`Request failed for relay ${id}`);
-			}
+			});
 		}
 	})();
 	promise.finally(() => setLoading(false));
