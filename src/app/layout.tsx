@@ -29,6 +29,7 @@ export default function RootLayout({
 							width={'100dvw'}
 							display={'flex'}
 							flexDirection={'column'}
+							overflow={"hidden"}
 						>
 							<Header />
 							<Box
@@ -36,7 +37,7 @@ export default function RootLayout({
 								padding={'10px'}
 								width={'100%'}
 								flexGrow={1}
-								overflow={'scroll'}
+								overflow={'hidden'}
 							>
 								{children}
 							</Box>
