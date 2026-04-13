@@ -24,6 +24,7 @@ function BigSwitch({
 			variant={'surface'}
 			flexDirection={'column'}
 			spinner={<Spinner size={'lg'} />}
+			_hover={{}}
 		>
 			{children}
 		</Button>

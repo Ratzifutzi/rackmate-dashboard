@@ -5,9 +5,6 @@ import {
 } from '@chakra-ui/react';
 
 const config = defineConfig({
-	conditions: {
-		_hover: '&:where(.chakra-hover-disabled)',
-	},
 	theme: {
 		tokens: {
 			fonts: {
