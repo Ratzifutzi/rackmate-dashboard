@@ -8,9 +8,11 @@ import {
 	ButtonProps,
 	Spinner,
 	Text,
+	VStack,
 } from '@chakra-ui/react';
-import { ZapIcon, ZapOffIcon } from 'lucide-react';
+import { MinusCircleIcon, MinusIcon, PlusCircleIcon, PlusIcon, ZapIcon, ZapOffIcon } from 'lucide-react';
 import { useLoadingStates } from '@/contexts/LoadingStates';
+import toggleOne from '@/helpers/relays/toggleOne';
 
 function BigSwitch({
 	children,
@@ -32,16 +34,40 @@ function BigSwitch({
 }
 
 function IndividualSwitch({ id }: { id: number }) {
+	const { RelayLoading, setRelayLoading } =
+		useLoadingStates();
+
 	return (
 		<StyledBox height={'full'} width={'115px'}>
-			<Text
-				textAlign={'center'}
-				color={'fg.subtle'}
-				padding={'7px'}
-				fontSize={'sm'}
-			>
-				Relay #{id}
-			</Text>
+			<VStack height={"full"}>
+				<Text
+					textAlign={'center'}
+					color={'fg.subtle'}
+					padding={'7px'}
+					fontSize={'sm'}
+				>
+					Relay #{id}
+				</Text>
+
+				<VStack width={"100%"} flex={1} alignItems={"center"} justifyContent={"space-between"} mb={3}>
+					<Button colorPalette={"green"} variant={"surface"} width={"80%"} height={"50px"} loading={RelayLoading} onClick={() => {
+						toggleOne(true, id, setRelayLoading)
+					}}>
+						<ZapIcon />
+						ON
+					</Button>
+					<PlusCircleIcon color='gray' />
+					<ZapIcon size={"60px"} />
+					<MinusCircleIcon color='gray' />
+
+					<Button colorPalette={"red"} variant={"surface"} width={"80%"} height={"50px"} loading={RelayLoading} onClick={() => {
+						toggleOne(false, id, setRelayLoading)
+					}}>
+						<ZapOffIcon />
+						OFF
+					</Button>
+				</VStack>
+			</VStack>
 		</StyledBox>
 	);
 }

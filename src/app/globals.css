@@ -12,3 +12,7 @@
 		text-decoration: inherit !important;
 	}
 }
+
+* {
+	user-select: none;
+}
