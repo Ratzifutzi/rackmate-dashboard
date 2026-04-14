@@ -43,7 +43,7 @@ export async function GET(_req: Request, context: Params) {
 		);
 	}
 
-	const baseUrl = 'http://192.168.178.106';
+	const baseUrl = `http://${process.env.RELAY_SERVER_IP}`;
 	const target = `${baseUrl}/${action}/${relayId}`;
 
 	try {
